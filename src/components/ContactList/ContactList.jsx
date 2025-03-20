@@ -1,12 +1,19 @@
+import ContactItem from 'components/ContactItem/ContactItem';
 import React from 'react';
 
-const ContactList = ({ contacts }) => {
+const ContactList = ({ contacts, children, handleDelete }) => {
   return (
     <div>
       <h2>Contacts</h2>
+      {children}
       <ul>
         {contacts.map(contact => (
-          <li key={contact.id}>{contact.name}</li>
+          <ContactItem
+            key={contact.id}
+            name={contact.name}
+            number={contact.number}
+            handleDelete={() => handleDelete(contact.id)}
+          />
         ))}
       </ul>
     </div>
